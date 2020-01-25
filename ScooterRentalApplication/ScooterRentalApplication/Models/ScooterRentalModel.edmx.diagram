@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3f7c5d634234569ab87c894830ac975" Name="Diagram1">
+        <EntityTypeShape EntityType="ScooterRentalModel.Customer" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Rent" Width="1.5" PointX="5.375" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.Scooter" Width="1.5" PointX="7.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScooterRentalModel.User" Width="1.5" PointX="2.125" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="ScooterRentalModel.FK_Rent_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ScooterRentalModel.FK_Rent_Scooter" />
+        <EntityTypeShape EntityType="ScooterRentalModel.DiscountLevel" Width="1.5" PointX="0.625" PointY="3" />
+        <AssociationConnector Association="ScooterRentalModel.FK_Customer_DiscountLevel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

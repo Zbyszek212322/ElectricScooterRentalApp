@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ScooterRentalApplication.Models.DiscountLevel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Discounts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DiscountLevelID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DiscountLevelID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DiscountLevelID })
+        </td>
+    </tr>
+}
+
+</table>

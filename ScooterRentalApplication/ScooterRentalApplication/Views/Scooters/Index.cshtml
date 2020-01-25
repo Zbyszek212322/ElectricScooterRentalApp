@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ScooterRentalApplication.Models.Scooter>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Scooters</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PicturePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerDay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PicturePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePerDay)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScooterID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScooterID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScooterID })
+        </td>
+    </tr>
+}
+
+</table>

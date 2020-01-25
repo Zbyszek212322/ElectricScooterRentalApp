@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ScooterRentalModelStoreContainer" CdmEntityContainer="ScooterRentalEntities">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="ScooterRentalModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="DiscountLevelID" ColumnName="DiscountLevelID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rent">
+      <EntityTypeMapping TypeName="ScooterRentalModel.Rent">
+        <MappingFragment StoreEntitySet="Rent">
+          <ScalarProperty Name="DateOfReturn" ColumnName="DateOfReturn" />
+          <ScalarProperty Name="IsReturned" ColumnName="IsReturned" />
+          <ScalarProperty Name="RentID" ColumnName="RentID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ScooterID" ColumnName="ScooterID" />
+          <ScalarProperty Name="DateRented" ColumnName="DateRented" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scooter">
+      <EntityTypeMapping TypeName="ScooterRentalModel.Scooter">
+        <MappingFragment StoreEntitySet="Scooter">
+          <ScalarProperty Name="ScooterID" ColumnName="ScooterID" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+          <ScalarProperty Name="PricePerDay" ColumnName="PricePerDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="ScooterRentalModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountLevel">
+      <EntityTypeMapping TypeName="ScooterRentalModel.DiscountLevel">
+        <MappingFragment StoreEntitySet="DiscountLevel">
+          <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+          <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+          <ScalarProperty Name="DiscountLevelID" ColumnName="DiscountLevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

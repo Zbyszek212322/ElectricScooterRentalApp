@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScooterRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="DiscountLevelID" Type="int" />
+  </EntityType>
+  <EntityType Name="DiscountLevel">
+    <Key>
+      <PropertyRef Name="DiscountLevelID" />
+    </Key>
+    <Property Name="DiscountLevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiscountCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DiscountValue" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rent">
+    <Key>
+      <PropertyRef Name="RentID" />
+    </Key>
+    <Property Name="RentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="ScooterID" Type="int" Nullable="false" />
+    <Property Name="DateRented" Type="date" Nullable="false" />
+    <Property Name="IsReturned" Type="bit" />
+    <Property Name="DateOfReturn" Type="date" />
+  </EntityType>
+  <EntityType Name="Scooter">
+    <Key>
+      <PropertyRef Name="ScooterID" />
+    </Key>
+    <Property Name="ScooterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="PicturePath" Type="varchar(max)" />
+    <Property Name="PricePerDay" Type="money" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Customer_DiscountLevel">
+    <End Role="DiscountLevel" Type="Self.DiscountLevel" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscountLevel">
+        <PropertyRef Name="DiscountLevelID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="DiscountLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rent_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Rent">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rent_Scooter">
+    <End Role="Scooter" Type="Self.Scooter" Multiplicity="1" />
+    <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scooter">
+        <PropertyRef Name="ScooterID" />
+      </Principal>
+      <Dependent Role="Rent">
+        <PropertyRef Name="ScooterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ScooterRentalModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiscountLevel" EntityType="Self.DiscountLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scooter" EntityType="Self.Scooter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Customer_DiscountLevel" Association="Self.FK_Customer_DiscountLevel">
+      <End Role="DiscountLevel" EntitySet="DiscountLevel" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rent_Customer" Association="Self.FK_Rent_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Rent" EntitySet="Rent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rent_Scooter" Association="Self.FK_Rent_Scooter">
+      <End Role="Scooter" EntitySet="Scooter" />
+      <End Role="Rent" EntitySet="Rent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

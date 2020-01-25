@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<div class="jumbotron">
+    <h1>Electric Scooters Rental Application</h1>
+    <p class="lead">This app helps to manage scooters rental business.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Customers", "Index", "Customers")</h2>
+        <p>
+            Here you can add a new customer.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Rentals", "Index", "Rents")</h2>
+        <p>
+            Here you register new rentals.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Scooters", "Index", "Scooters")</h2>
+        <p>
+            Here you can add a new electric scooter.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Discounts", "Index", "DiscountLevels")</h2>
+        <p>
+            Here you can manage discount levels.
+        </p>
+    </div>
+</div>

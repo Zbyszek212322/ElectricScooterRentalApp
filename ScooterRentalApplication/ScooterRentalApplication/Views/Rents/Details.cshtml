@@ -1,0 +1,58 @@
+﻿@model ScooterRentalApplication.Models.Rent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRented)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRented)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsReturned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsReturned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfReturn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfReturn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Scooter.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Scooter.Brand)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
